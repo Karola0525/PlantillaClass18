@@ -24,11 +24,8 @@ function preload(){
   obstacle6=loadImage("obstacle6.png");
   restartImg=loadImage("restart.png")
   gameOverImg=loadImage("gameOver.png")
-  //PRIMERO CARGAMOS EL SONIDO DE SALTO
   Sound=loadSound("jump.mp3")
-  // TERCERO CARGAMOS EL SONIDO DE FIN DE TREX
   Sound1=loadSound("die.mp3")
-  // SEXTO CARGAR SONIDO ITO
   Sound2=loadSound("checkpoint.mp3")
   
  
@@ -70,7 +67,6 @@ function setup() {
  console.log("Hola"+"Mundo")
  score=0;
  trex.setCollider("circle",0,0,40);
- // NOVENO DAR INTELIGENCIA ARTIFICIAL A TREX
  //trex.setCollider("rectangle",0,0,40,trex.height);
  trex.debug=true
     
@@ -86,10 +82,8 @@ function draw() {
 
   
   if(gameState===PLAY){
-    //OCTAVO AUMENTAR VELOCIDAD DEL PISO 
     ground.velocityX = -(4+3*score/100)
     score=score+Math.round(frameCount/60)
-    //QUINTO CREAR SONIDO PARA ITO
     if(score>0 && score%100===0){
       Sound2.play();
     }
@@ -100,7 +94,6 @@ function draw() {
 
     if(keyDown("space")&& trex.y >= 100) {
       trex.velocityY = -10;
-      //SEGUNDO ACTIVAMOS EL SONIDO DE SALTO
       Sound.play();
   
      
@@ -113,7 +106,6 @@ function draw() {
 
 if(obstaclesGroup.isTouching(trex)){
   gameState=END;
-  // CUARTO LLAMAR SONIDO DE FIN DE TREX
   Sound1.play();
 }    
     
@@ -161,7 +153,6 @@ function spawnClouds(){
   function spawnObstacles(){
     if(frameCount%60==0){
       var obstacle=createSprite(600,165,10,40);
-      //SÉPTIMO CAMBIAR VELOCIDAD DE LOS OBSTACULOS
 
       obstacle.velocityX=-(6+score/100);
 
